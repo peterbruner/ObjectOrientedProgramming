@@ -5,9 +5,8 @@ package com.theironyard.novauc;
  */
 public class Bakery extends InventoryItem {
 
-
-    Bakery(String name, int quantity) {
-        super(name, quantity,"bakery");
+    Bakery(String name, int quantity, String category) {
+        super(name, quantity, category);
 //        this.category = "Bakery";
 
     }

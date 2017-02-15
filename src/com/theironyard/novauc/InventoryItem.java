@@ -20,4 +20,10 @@ public class InventoryItem {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return this.name + " " + this.category + " " + this.quantity;
+
+        //this.name, this.quantity, this.category;
+    }
 }

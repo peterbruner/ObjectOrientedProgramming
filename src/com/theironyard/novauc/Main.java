@@ -9,13 +9,11 @@ public class Main {
     public static User user = new User();
 
     public static void main(String[] args) {
-        String name;
-        int quantity;
-        String category;
-
+//        String name;
+//        int quantity;
+//        String category;
 
         user.menu();
-        user.createItem();
 
     }
 }

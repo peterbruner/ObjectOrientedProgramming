@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public class User {
 
+
+
     public static ArrayList<InventoryItem> tracker = new ArrayList<>();
     public static Scanner input = new Scanner(System.in);
     public static Scanner inputNumbers = new Scanner(System.in);
@@ -16,20 +18,23 @@ public class User {
     int quantityUser;
     String categoryUser;
     int loopdioop = 1;
+    String name;
+    int quantity;
 
     public void menu() {
         while (loopdioop == 1) {
-            System.out.println("What would you like to do? add / show / exit");
+            //ToDo: fix issue of looping extra time
+            System.out.println("What would you like to do? add / list / exit");
             switch (input.nextLine()) {
 
-                case "add" :
+                case "add":
                     //System.out.println("menu option add");
                     createItem();
                     break;
 
-                case "show" :
-                    System.out.println("menu option show");
-                    //show();
+                case "list":
+                    //System.out.println("menu option list");
+                    showItems();
                     break;
 
                 default:
@@ -41,36 +46,56 @@ public class User {
     public void createItem() {
         //no loop necessary for adding. mess up an entry? just live with it!!!!!
         System.out.println("What is the category of the item? bakery / deli / butcher / produce / dairy");
-        String name = input();
-        switch (input.nextLine()) {
-            case "bakery" :
-                new Bakery(name, 0);
+        categoryUser = input.nextLine();
+        switch (categoryUser) {
+            case "bakery":
+                name = findName();
+                quantity = findQuantity();
+                tracker.add(new Bakery(name, quantity, categoryUser));
                 break;
-            case "deli" :
-                new Deli(name, 0);
+            case "deli":
+                name = findName();
+                quantity = findQuantity();
+                tracker.add(new Deli(name, quantity, categoryUser));
                 break;
-            case "butcher" :
+            case "butcher":
+                name = findName();
+                quantity = findQuantity();
+                tracker.add(new Butcher(name,quantity, categoryUser));
                 break;
-            case "produce" :
+            case "produce":
+                name = findName();
+                quantity = findQuantity();
+                tracker.add(new Produce(name, quantity, categoryUser));
                 break;
-            case "dairy" :
+            case "dairy":
+                name = findName();
+                quantity = findQuantity();
+                tracker.add(new Dairy(name, quantity, categoryUser));
                 break;
             default:
-                System.out.println("no mas");
+                System.out.println("Ending");
         }
+    }
 
+    public String findName() {
         System.out.println("What is the name of the item?");
         nameUser = input.nextLine();
+        return nameUser;
+    }
+
+    public int findQuantity() {
         System.out.println("Enter the quantity of the item in whole number digits");
         quantityUser = inputNumbers.nextInt();
-        System.out.printf("%s %s %s", categoryUser, nameUser, quantityUser);
-        //InventoryItem(name, quantity, category);
-        this.nameUser = nameUser;
-        this.quantityUser = quantityUser;
-        this.categoryUser = categoryUser;
+        return quantityUser;
+    }
 
-        //which constructor(s) to put in the below statement? loop on the category to pick constructor == category?
+    public String showItems() {
+        for (int i = 0; i < tracker.size(); i++) {
+            System.out.println(tracker.get(i).toString());
+        }
 
-        //tracker.add(new Bakery(name, quantity, category));
+        return null;
     }
 }
+

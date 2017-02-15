@@ -6,6 +6,6 @@ package com.theironyard.novauc;
 public class Deli extends InventoryItem {
 
     Deli(String name, int quantity, String category) {
-        super(name, quantity, "deli");
+        super(name, quantity, category);
     }
 }
